@@ -1,0 +1,49 @@
+#!/bin/bash
+
+echo "Starting simulations"
+#simulation parameters for noise calculations
+NSIM=100000  
+DATAPOINTS=2
+TIME=1000 
+#simulation parameters to compute a few traces for sRNA
+DATAPOINTSTR=500
+NSIMTR=1000
+TIMETR=500
+#simulation parameters to compute a few traces for TetR
+DATAPOINTSTRT=150
+NSIMTRT=50000
+TIMETRT=150
+#model parameters
+KT=6120
+KP=0.004
+HT=100
+RT=3500
+ST='26000'
+ASP='0.01 0.05 0.1 0.25 0.5 1 2 5 10'
+DP=0.0234
+BG=1
+BS=1
+KD=0.0314
+HC=4
+SGRID='0 0.1 0.4 0.7 1'
+
+
+cd omprc
+
+#echo "  Open and closed loop OmpR simulations of $NSIM traces with $DATAPOINTS snapshots on the time interval [0, $TIME]"
+#python -W ignore compute_omprc_stats.py -T $TIME -s $DATAPOINTS -n $NSIM -kt $KT -kp $KP -ht $HT -rt $RT -st $ST -dp $DP -as $ASP -bg $BG -bs $BS -kd $KD -hc $HC -sg $SGRID
+
+echo "  Open and closed loop Tazc simulations of $NSIM traces with $DATAPOINTS snapshots on the time interval [0, $TIME]"
+python -W ignore compute_tazc_stats.py -T $TIME -s $DATAPOINTS -n $NSIM -kt $KT -kp $KP -ht $HT -rt $RT -st $ST -dp $DP -as $ASP -bg $BG -bs $BS -kd $KD -hc $HC -sg $SGRID
+
+#echo "  Open and closed loop OmpR simulations of $NSIMTR traces with $DATAPOINTSTR snapshots on the time interval [0, $TIMETR]"
+#python -W ignore compute_omprc_stats.py -T $TIMETR -s $DATAPOINTSTR -n $NSIMTR -kt $KT -kp $KP -ht $HT -rt $RT -st $ST -dp $DP -as $ASP -bg $BG -bs $BS -kd $KD -hc $HC -sg $SGRID -fn
+
+#echo "  Open and closed loop Tazc simulations of $NSIMTR traces with $DATAPOINTSTR snapshots on the time interval [0, $TIMETR]"
+#python -W ignore compute_tazc_stats.py -T $TIMETR -s $DATAPOINTSTR -n $NSIMTR -kt $KT -kp $KP -ht $HT -rt $RT -st $ST -dp $DP -as $ASP -bg $BG -bs $BS -kd $KD -hc $HC -sg $SGRID
+
+cd ..
+
+
+
+

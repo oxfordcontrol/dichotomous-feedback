@@ -1,0 +1,30 @@
+function [dx] = two_comp_sr_ph_feed(t, x, params)
+
+if (size(x,1) == 1)
+    x = x(:);
+end
+n_sim = size(x,1)/8;
+
+Taz         = x(0*n_sim + 1  :  1*n_sim);
+TazP        = x(1*n_sim + 1  :  2*n_sim);
+OmpR        = x(2*n_sim + 1  :  3*n_sim);
+OmpRP       = x(3*n_sim + 1  :  4*n_sim);
+OmpRC       = x(4*n_sim + 1  :  5*n_sim);
+OmpRCP      = x(5*n_sim + 1  :  6*n_sim);
+TazC        = x(6*n_sim + 1  :  7*n_sim);
+X           = x(7*n_sim + 1  :  8*n_sim);
+
+num   = (OmpRP./params.Kdr).^params.hill_coeff; %  params.tx_gfp*OmpRP;%
+tl_x  = (params.tx_gfp*(num./(num + 1)));
+tl_rc  = params.P*tl_x; %params.tlat_omprc*num./(num + 1);
+tl_tc  = params.Q*tl_x; %params.tlat_omprc*num./(num + 1);
+
+dx = [params.tlat_Taz-params.delta_Taz*Taz-params.kup_hill.*Taz+TazP.*(params.kt*OmpR+params.ktc*OmpRC); ...
+      params.kup_hill.*Taz-TazP.*(params.kt*OmpR+params.ktc*OmpRC)-params.delta_Taz*TazP;...
+      params.tlat_ompr-params.delta_OmpR*OmpR-params.kt.*TazP.*OmpR+(params.kp.*Taz+params.kpc.*TazC).*OmpRP;... -
+      -params.delta_OmpR*OmpRP+params.kt.*TazP.*OmpR-(params.kp.*Taz+params.kpc.*TazC).*OmpRP;... 
+      tl_rc-params.delta_OmpR*OmpRC-params.ktc.*TazP.*OmpRC+(params.kpc.*Taz+params.kpc.*TazC).*OmpRCP;... -
+      -params.delta_OmpR*OmpRCP+params.ktc.*TazP.*OmpRC-(params.kpc.*Taz+params.kpc.*TazC).*OmpRCP; ...
+      tl_tc- params.delta*TazC;...
+      tl_x - params.delta_OmpR*X];
+end

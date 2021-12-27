@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level2/version4" level="2" version="4">
+  <annotation>
+    <SimBiology xmlns="http://www.mathworks.com">
+      <Version Major="5" Minor="5" Point="0"/>
+    </SimBiology>
+  </annotation>
+  <model id="mw5f8578ef_025a_4000_ad93_6ca83c094dbc" name="TazOmpR">
+    <listOfUnitDefinitions>
+      <unitDefinition id="MWBUILTINUNIT_molecule" name="molecule">
+        <listOfUnits>
+          <unit kind="mole" exponent="1" multiplier="1.66053872801495e-24"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition name="1/(molecule * minute)">
+        <listOfUnits>
+          <unit kind="mole" exponent="-1"/>
+          <unit kind="second" exponent="-1"/>
+          <unit kind="dimensionless" multiplier="1.00369033166667e+22"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="MWDERIVEDUNIT_1__minute" name="1/minute">
+        <listOfUnits>
+          <unit kind="second" exponent="-1"/>
+          <unit kind="dimensionless" multiplier="0.0166666666666667"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="MWDERIVEDUNIT_molecule__minute" name="molecule/minute">
+        <listOfUnits>
+          <unit kind="mole" exponent="1"/>
+          <unit kind="second" exponent="-1"/>
+          <unit kind="dimensionless" multiplier="2.76756454669158e-26"/>
+        </listOfUnits>
+      </unitDefinition>
+    </listOfUnitDefinitions>
+    <listOfCompartments>
+      <compartment id="mwd8989567_8e45_4618_83b6_04113045a454" name="Two Component System with a Sink" size="1" constant="true"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species id="mwed8437ac_2e5f_4577_861d_bb0eb1042ef8" name="Taz" compartment="mwd8989567_8e45_4618_83b6_04113045a454" initialAmount="100" substanceUnits="MWBUILTINUNIT_molecule" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species id="mwb4f21f3a_4c1a_4557_816e_7f49965976c2" name="TazP" compartment="mwd8989567_8e45_4618_83b6_04113045a454" initialAmount="0" substanceUnits="MWBUILTINUNIT_molecule" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species id="mwdda1b64b_68ae_4b59_b000_a65a137e39f2" name="OmpR" compartment="mwd8989567_8e45_4618_83b6_04113045a454" initialAmount="3500" substanceUnits="MWBUILTINUNIT_molecule" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species id="mwb6e1811b_f6f0_4fcf_998a_d9f0efea9a58" name="OmpRp" compartment="mwd8989567_8e45_4618_83b6_04113045a454" initialAmount="0" substanceUnits="MWBUILTINUNIT_molecule" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species id="mwe7f1b02d_c65b_4c3f_8d27_ec5a81260b51" name="TetR" compartment="mwd8989567_8e45_4618_83b6_04113045a454" initialAmount="0" substanceUnits="MWBUILTINUNIT_molecule" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+    </listOfSpecies>
+    <listOfReactions>
+      <reaction id="mwf0a39d01_2920_4018_990a_102b8c1ca983" name="Phosphorilation of OmpR" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="mwb4f21f3a_4c1a_4557_816e_7f49965976c2" stoichiometry="1"/>
+          <speciesReference species="mwdda1b64b_68ae_4b59_b000_a65a137e39f2" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mwed8437ac_2e5f_4577_861d_bb0eb1042ef8" stoichiometry="1"/>
+          <speciesReference species="mwb6e1811b_f6f0_4fcf_998a_d9f0efea9a58" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw9c209dd1_71d1_4cfc_8c7a_6c33e924a4ea </ci>
+              <ci> mwb4f21f3a_4c1a_4557_816e_7f49965976c2 </ci>
+              <ci> mwdda1b64b_68ae_4b59_b000_a65a137e39f2 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw9c209dd1_71d1_4cfc_8c7a_6c33e924a4ea" name="kt" value="4.1589" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwdc7b8d9f_8651_4da4_b6cf_43b4ee5da8ef" name="Dephosphorylation of OmpR" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="mwed8437ac_2e5f_4577_861d_bb0eb1042ef8" stoichiometry="1"/>
+          <speciesReference species="mwb6e1811b_f6f0_4fcf_998a_d9f0efea9a58" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mwed8437ac_2e5f_4577_861d_bb0eb1042ef8" stoichiometry="1"/>
+          <speciesReference species="mwdda1b64b_68ae_4b59_b000_a65a137e39f2" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw3f9823ae_307e_4245_b597_ec71ce0772ee </ci>
+              <ci> mwed8437ac_2e5f_4577_861d_bb0eb1042ef8 </ci>
+              <ci> mwb6e1811b_f6f0_4fcf_998a_d9f0efea9a58 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw3f9823ae_307e_4245_b597_ec71ce0772ee" name="k2" value="0.0831" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwc02f2859_526c_44af_80af_7e2cf29b3e03" name="autophosphorylation of Taz" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="mwed8437ac_2e5f_4577_861d_bb0eb1042ef8" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mwb4f21f3a_4c1a_4557_816e_7f49965976c2" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw5e4f0c6e_cd67_4aa5_a1a9_67dc85d6c90b </ci>
+              <ci> mwed8437ac_2e5f_4577_861d_bb0eb1042ef8 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw5e4f0c6e_cd67_4aa5_a1a9_67dc85d6c90b" name="k_a" value="1" units="MWDERIVEDUNIT_1__minute" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw31a1520c_1fcf_4b0f_946c_b78e441a7377" name="Taz Production" reversible="false" fast="false">
+        <listOfProducts>
+          <speciesReference species="mwed8437ac_2e5f_4577_861d_bb0eb1042ef8" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <ci> mw5f715547_6d3c_43bf_a233_9d86c7177293 </ci>
+          </math>
+          <listOfParameters>
+            <parameter id="mw5f715547_6d3c_43bf_a233_9d86c7177293" name="beta_taz" value="1" units="MWDERIVEDUNIT_molecule__minute" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw33b35815_800c_40cf_884e_199ad1bc1108" name="OmpR production" reversible="false" fast="false">
+        <listOfProducts>
+          <speciesReference species="mwdda1b64b_68ae_4b59_b000_a65a137e39f2" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <ci> mw821eedf5_df51_4a37_afcc_b84268c2395f </ci>
+          </math>
+          <listOfParameters>
+            <parameter id="mw821eedf5_df51_4a37_afcc_b84268c2395f" name="beta_ompr" value="1" units="MWDERIVEDUNIT_molecule__minute" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwe37e250f_3a8b_492d_a81d_43b2f340f30f" name="Taz degrdatation" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="mwed8437ac_2e5f_4577_861d_bb0eb1042ef8" stoichiometry="1"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw3f9ffc0e_563e_465b_8975_593f14883a29 </ci>
+              <ci> mwed8437ac_2e5f_4577_861d_bb0eb1042ef8 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw3f9ffc0e_563e_465b_8975_593f14883a29" name="delta_p" value="1" units="MWDERIVEDUNIT_1__minute" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw0c69bc05_028e_4deb_a5df_ab241685ce31" name="TazP degradation" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="mwb4f21f3a_4c1a_4557_816e_7f49965976c2" stoichiometry="1"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw06aa2291_4338_4949_b060_0ac04df79d3b </ci>
+              <ci> mwb4f21f3a_4c1a_4557_816e_7f49965976c2 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw06aa2291_4338_4949_b060_0ac04df79d3b" name="delta_p" value="1" units="MWDERIVEDUNIT_1__minute" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwb6b8609a_7674_41f8_b50d_2aee30f52ff0" name="OmpR degradation" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="mwdda1b64b_68ae_4b59_b000_a65a137e39f2" stoichiometry="1"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mwcd2fccfb_2272_4a93_9d63_8c773a538d92 </ci>
+              <ci> mwdda1b64b_68ae_4b59_b000_a65a137e39f2 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mwcd2fccfb_2272_4a93_9d63_8c773a538d92" name="delta_p" value="1" units="MWDERIVEDUNIT_1__minute" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mwf52176d7_8c4a_4cc7_91fb_293ccc174aa3" name="OmpRP degradation" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="mwb6e1811b_f6f0_4fcf_998a_d9f0efea9a58" stoichiometry="1"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mw1240185f_4eab_4c4d_88c3_cda331776eda </ci>
+              <ci> mwb6e1811b_f6f0_4fcf_998a_d9f0efea9a58 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mw1240185f_4eab_4c4d_88c3_cda331776eda" name="delta_p" value="1" units="MWDERIVEDUNIT_1__minute" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw70b94d88_28f7_4ae4_baf1_a55544bbe5b6" name="OmpRc Production" reversible="false" fast="false">
+        <listOfProducts>
+          <speciesReference species="mwe7f1b02d_c65b_4c3f_8d27_ec5a81260b51" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <ci> mw569a983b_21f1_42c7_9877_a3121d82ec4b </ci>
+          </math>
+          <listOfParameters>
+            <parameter id="mw569a983b_21f1_42c7_9877_a3121d82ec4b" name="beta_omprc" value="1" units="MWDERIVEDUNIT_molecule__minute" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mw904ff33d_efad_4aed_8cb3_965789693ff1" name="OmpRc degradation" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="mwe7f1b02d_c65b_4c3f_8d27_ec5a81260b51" stoichiometry="1"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> mwf669e153_975d_47ee_83de_588a316e3f98 </ci>
+              <ci> mwe7f1b02d_c65b_4c3f_8d27_ec5a81260b51 </ci>
+            </apply>
+          </math>
+          <listOfParameters>
+            <parameter id="mwf669e153_975d_47ee_83de_588a316e3f98" name="delta_p" value="1" units="MWDERIVEDUNIT_1__minute" constant="true"/>
+          </listOfParameters>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>
